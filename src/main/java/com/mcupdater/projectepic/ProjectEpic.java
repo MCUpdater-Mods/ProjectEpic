@@ -3,6 +3,7 @@ package com.mcupdater.projectepic;
 import com.mcupdater.projectepic.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -13,10 +14,11 @@ public class ProjectEpic {
 
 	@SidedProxy(clientSide = "com.mcupdater.projectepic.proxy.ClientProxy", serverSide = "com.mcupdater.projectepic.proxy.CommonProxy")
 	public static CommonProxy proxy;
+	public ModMetadata metadata;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-
+		this.metadata = event.getModMetadata();
 	}
 
 	@EventHandler
