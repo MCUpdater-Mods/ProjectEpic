@@ -1,0 +1,16 @@
+[
+{
+  "modid": "projectepic",
+  "name": "Project Epic",
+  "description": "MCUpdater's Tech Mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["smbarbour","allaryin"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
