@@ -20,14 +20,39 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+
+ext.configFile = file 'gradle.properties'
+configFile.withReader {
+	def prop = new Properties()
+	prop.load(it)
+	project.ext.config = new ConfigSlurper().parse prop
+}
+
+task buildInfo() {
+    if (System.getenv().BUILD_NUMBER != null) {
+        ext.buildNum = "${System.getenv().BUILD_NUMBER}"
+    } else {
+        def cmd = "git rev-parse --short HEAD"
+        def proc = cmd.execute()
+        proc.waitFor()
+        if (proc.exitValue() == 0) {
+            ext.revision = "DEV." + proc.text.trim()
+        } else {
+            ext.revision = "ERROR"
+        }
+        ext.buildNum = "${project.buildInfo.revision}"
+    }
+}
+
+version = config.mod_version_major + '.' + config.mod_version_minor + '.' + config.mod_version_patch + '.' + buildInfo.buildNum
+
+group= "com.mcupdater.projectepic" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "projectepic"
 
 minecraft {
-    version = "1.9-12.16.0.1839-1.9"
+    version = config.mc_version + '-' + config.forge_version + '-' + config.mc_version
     runDir = "run"
-    
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
