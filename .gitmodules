@@ -1,0 +1,9 @@
+[submodule "MCULib"]
+	path = MCULib
+	url = https://github.com/MCUpdater-Mods/MCULib.git
+[submodule "Process-Enhancement"]
+	path = Process-Enhancement
+	url = https://github.com/MCUpdater-Mods/Process-Enhancment.git
+[submodule "Reconstructor"]
+	path = Reconstructor
+	url = https://github.com/smbarbour/Reconstructor.git

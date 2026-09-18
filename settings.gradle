@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+    plugins {
+        id "net.neoforged.moddev" version "${mdg_version}"
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+rootProject.name = 'ProjectEpic'
+
+include 'MCULib'
+include 'Process-Enhancement'
+include 'Reconstructor'
